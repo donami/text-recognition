@@ -10,7 +10,8 @@ const multer = require('multer');
 // const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
 // const { resizeImage } = require('./utils/resize-image');
-const { getPlayers } = require('./utils/get-players');
+// const { getPlayers } = require('./utils/get-players');
+const { screenshot } = require('./utils/screenshot');
 // const { scrape } = require('./utils/scraper');
 
 const upload = multer({ dest: '/tmp/' });
@@ -66,22 +67,24 @@ app.post('/', upload.array('files'), async (req, res) => {
   if (req.files && req.files[0]) {
     const file = req.files[0];
     console.log('xxx', file);
+
+    await screenshot('https://futwiz.com');
     // const resizedImagePath = `${file.path}_small.jpg`;
     // await resizeImage(file.path, resizedImagePath);
 
-    const players = await getPlayers(file.path);
+    // const players = await getPlayers(file.path);
     // const players = await getPlayers(resizedImagePath);
 
-    const results = await Promise.all(
-      players.map(async (player) => {
-        const price = await scrape(player.url);
-        return {
-          name: player.name,
-          price: price && price.length ? price[0] : 0,
-          url: player.url,
-        };
-      })
-    );
+    // const results = await Promise.all(
+    //   players.map(async (player) => {
+    //     const price = await scrape(player.url);
+    //     return {
+    //       name: player.name,
+    //       price: price && price.length ? price[0] : 0,
+    //       url: player.url,
+    //     };
+    //   })
+    // );
 
     // // remove uploaded files
     // fs.unlinkSync(file.path);
