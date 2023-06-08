@@ -13,7 +13,7 @@ const multer = require('multer');
 // const { getPlayers } = require('./utils/get-players');
 // const { scrape } = require('./utils/scraper');
 
-// const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: 'uploads/' });
 
 const app = express();
 
