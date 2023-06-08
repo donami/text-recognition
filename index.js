@@ -3,7 +3,7 @@ const express = require('express');
 // const path = require('path');
 // const cookieParser = require('cookie-parser');
 // const logger = require('morgan');
-const multer = require('multer');
+// const multer = require('multer');
 // const cors = require('cors');
 // const fs = require('fs');
 
@@ -13,7 +13,7 @@ const multer = require('multer');
 // const { getPlayers } = require('./utils/get-players');
 // const { scrape } = require('./utils/scraper');
 
-const upload = multer({ dest: 'uploads/' });
+// const upload = multer({ dest: 'uploads/' });
 
 const app = express();
 
@@ -62,7 +62,7 @@ const app = express();
 //   return res.json({ done: true });
 // });
 
-app.post('/', upload.array('files'), (req, res) => {
+app.post('/', (req, res) => {
   return res.json({ hello: true });
 });
 
