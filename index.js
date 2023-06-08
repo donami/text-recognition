@@ -3,7 +3,7 @@ const express = require('express');
 // const path = require('path');
 // const cookieParser = require('cookie-parser');
 // const logger = require('morgan');
-// const multer = require('multer');
+const multer = require('multer');
 // const cors = require('cors');
 // const fs = require('fs');
 
@@ -29,38 +29,38 @@ const app = express();
 // app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-// app.post('/image', upload.array('files'), async (req, res) => {
-//   console.log(req.body);
-//   console.log(req.files);
+app.post('/image', upload.array('files'), async (req, res) => {
+  // console.log(req.body);
+  // console.log(req.files);
 
-//   if (req.files && req.files[0]) {
-//     const file = req.files[0];
-//     const resizedImagePath = `${file.path}_small.jpg`;
-//     await resizeImage(file.path, resizedImagePath);
+  // if (req.files && req.files[0]) {
+  //   const file = req.files[0];
+  //   const resizedImagePath = `${file.path}_small.jpg`;
+  //   await resizeImage(file.path, resizedImagePath);
 
-//     const players = await getPlayers(resizedImagePath);
+  //   const players = await getPlayers(resizedImagePath);
 
-//     const results = await Promise.all(
-//       players.map(async (player) => {
-//         const price = await scrape(player.url);
-//         return {
-//           name: player.name,
-//           price: price && price.length ? price[0] : 0,
-//           url: player.url,
-//         };
-//       })
-//     );
+  //   const results = await Promise.all(
+  //     players.map(async (player) => {
+  //       const price = await scrape(player.url);
+  //       return {
+  //         name: player.name,
+  //         price: price && price.length ? price[0] : 0,
+  //         url: player.url,
+  //       };
+  //     })
+  //   );
 
-//     // remove uploaded files
-//     fs.unlinkSync(file.path);
-//     fs.unlinkSync(resizedImagePath);
+  //   // remove uploaded files
+  //   fs.unlinkSync(file.path);
+  //   fs.unlinkSync(resizedImagePath);
 
-//     console.log('players', results);
-//     return res.json(results);
-//   }
+  //   console.log('players', results);
+  //   return res.json(results);
+  // }
 
-//   return res.json({ done: true });
-// });
+  return res.json({ done: true });
+});
 
 app.get('/', (req, res) => {
   return res.json({ hello: true });
