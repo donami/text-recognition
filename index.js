@@ -5,13 +5,13 @@ const express = require('express');
 // const logger = require('morgan');
 const multer = require('multer');
 // const cors = require('cors');
-// const fs = require('fs');
+const fs = require('fs');
 
 // const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
 const { resizeImage } = require('./utils/resize-image');
-// const { getPlayers } = require('./utils/get-players');
-// const { scrape } = require('./utils/scraper');
+const { getPlayers } = require('./utils/get-players');
+const { scrape } = require('./utils/scraper');
 
 const upload = multer({ dest: '/tmp/' });
 
