@@ -87,7 +87,8 @@ app.post('/', upload.array('files'), async (req, res) => {
     // fs.unlinkSync(resizedImagePath);
 
     // console.log('players', results);
-    return res.json(results);
+    // return res.json(results);
+    return res.json({ done: false });
   }
 
   return res.json({ done: true });
