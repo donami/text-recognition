@@ -68,18 +68,18 @@ app.post('/', upload.array('files'), async (req, res) => {
     const resizedImagePath = `${file.path}_small.jpg`;
     await resizeImage(file.path, resizedImagePath);
 
-    // const players = await getPlayers(resizedImagePath);
+    const players = await getPlayers(resizedImagePath);
 
-    // const results = await Promise.all(
-    //   players.map(async (player) => {
-    //     const price = await scrape(player.url);
-    //     return {
-    //       name: player.name,
-    //       price: price && price.length ? price[0] : 0,
-    //       url: player.url,
-    //     };
-    //   })
-    // );
+    const results = await Promise.all(
+      players.map(async (player) => {
+        const price = await scrape(player.url);
+        return {
+          name: player.name,
+          price: price && price.length ? price[0] : 0,
+          url: player.url,
+        };
+      })
+    );
 
     // remove uploaded files
     fs.unlinkSync(file.path);
